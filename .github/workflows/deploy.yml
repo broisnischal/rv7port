@@ -19,6 +19,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
       - name: Publish to Cloudflare
         run: wrangler deploy
         env:
