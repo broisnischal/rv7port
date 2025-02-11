@@ -39,7 +39,10 @@ export default defineConfig(({ isSsrBuild }) => ({
     tsconfigPaths(),
   ],
   server: {
-    allowedHosts: [
+    hmr: {
+      overlay: false
+    }
+    , allowedHosts: [
       'snehaa.store',
       '.snehaa.store'
     ]

@@ -2,6 +2,10 @@
   "name": "po",
   "private": true,
   "type": "module",
+  "main": "index.js",
+  "imports": {
+    "#*": "./*"
+  },
   "scripts": {
     "build": "react-router build",
     "db:generate": "dotenv -- drizzle-kit generate",
@@ -17,9 +21,11 @@
     "@react-router/serve": "^7.1.5",
     "drizzle-orm": "~0.36.3",
     "isbot": "^5.1.17",
+    "mdx-bundler": "^10.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.1.5"
+    "react-router": "^7.1.5",
+    "rehype-pretty-code": "^0.14.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241112.0",
