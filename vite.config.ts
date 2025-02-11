@@ -9,8 +9,8 @@ export default defineConfig(({ isSsrBuild }) => ({
   build: {
     rollupOptions: isSsrBuild
       ? {
-          input: "./workers/app.ts",
-        }
+        input: "./workers/app.ts",
+      }
       : undefined,
   },
   ssr: {
@@ -38,4 +38,10 @@ export default defineConfig(({ isSsrBuild }) => ({
     reactRouter(),
     tsconfigPaths(),
   ],
+  server: {
+    allowedHosts: [
+      'snehaa.store',
+      '.snehaa.store'
+    ]
+  }
 }));
