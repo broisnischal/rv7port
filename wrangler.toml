@@ -1,0 +1,15 @@
+workers_dev = true
+name = "portfolioo"
+compatibility_date = "2024-11-18"
+compatibility_flags = ["nodejs_compat"]
+main = "./build/server/index.js"
+assets = { directory = "./build/client/" }
+
+[vars]
+VALUE_FROM_CLOUDFLARE = "Hello from Cloudflare"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolioo"
+database_id = "40bc33d5-5d5e-4351-b9a5-7c77f04b06aa"
+migrations_dir = "drizzle"
