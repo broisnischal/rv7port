@@ -1,4 +1,3 @@
-import fs from "node:fs";
 
 type FrontMatter = {
     title: string;
@@ -52,11 +51,6 @@ export async function getAllArticlesSlug() {
     return Object.keys(modules); // .map((path) => path.split('/')[3])
 }
 
-
-
-export function getAllArticlesSLUGG() {
-    return fs.readdirSync(`${process.cwd()}/app/routes/blog`);
-}
 
 
 export async function listAllArticle(): Promise<Article[]> {
