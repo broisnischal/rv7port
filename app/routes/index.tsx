@@ -1,9 +1,5 @@
 import * as schema from "~/database/schema";
-
-import { generateTOTP, getTOTPAuthUri } from '@epic-web/totp';
-import { Welcome } from "../welcome/welcome";
-
-import type { Route } from "./+types/home";
+import type { Route } from "./+types";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -41,20 +37,8 @@ export async function loader({ context }: Route.LoaderArgs) {
     },
   });
 
-  const { secret, period, digits, algorithm } = await generateTOTP()
-  const otpUri = getTOTPAuthUri({
-    period,
-    digits,
-    algorithm,
-    secret,
-    accountName: 'neeswebservice@gmail.com',
-    issuer: 'Your App Name',
-  })
-
-
 
   return {
-    otpUri,
     guestBook,
     message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE,
   };
@@ -62,15 +46,9 @@ export async function loader({ context }: Route.LoaderArgs) {
 
 export default function Home({ actionData, loaderData }: Route.ComponentProps) {
 
-
   return (
     <div>
-      {loaderData.otpUri}
-      <Welcome
-        guestBook={loaderData.guestBook}
-        guestBookError={actionData?.guestBookError}
-        message={loaderData.message}
-      />
+      <h1>Testing</h1>
     </div>
   );
 }

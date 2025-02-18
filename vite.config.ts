@@ -5,6 +5,12 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { getLoadContext } from "./load-context";
 
+// Mdx
+
+import mdx from "@mdx-js/rollup";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+
 export default defineConfig(({ isSsrBuild }) => ({
   build: {
     rollupOptions: isSsrBuild
@@ -31,6 +37,10 @@ export default defineConfig(({ isSsrBuild }) => ({
     },
   },
   plugins: [
+    {
+      enforce: "pre",
+      ...mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] }),
+    },
     cloudflareDevProxy({
       getLoadContext,
     }),
@@ -39,12 +49,6 @@ export default defineConfig(({ isSsrBuild }) => ({
     tsconfigPaths(),
   ],
   server: {
-    hmr: {
-      overlay: false
-    }
-    , allowedHosts: [
-      'snehaa.store',
-      '.snehaa.store'
-    ]
+    allowedHosts: ['.snehaa.store']
   }
 }));
